@@ -1,0 +1,46 @@
+﻿local _, addon = ...
+local L = addon.L
+
+-- Lua
+local _G = getfenv(0)
+
+if GetLocale() ~= "esES" then return end
+
+L["ANCHOR_FRAME_#"] = "Marco de anclaje #%d"
+L["ANCHOR_FRAMES"] = "Marcos de anclaje"
+L["ANCHOR_RESET_DESC"] = "|cffffffffShift click|r para reiniciar la posición."
+L["BORDER"] = "Borde"
+L["CHANGELOG"] = "Registro de cambios"
+L["CHANGELOG_FULL"] = "Completo"
+L["COORDS"] = "Coordenadas"
+L["COPPER_THRESHOLD"] = "Límite de Cobre"
+L["COPPER_THRESHOLD_DESC"] = "Cantidad mínima de Cobre con la que mostrar un Toast."
+L["CURRENCY_THRESHOLD_DESC"] = "Introduce |cffffd200-1|r para ignorar la moneda, |cffffd2000|r para desactivar el filtro, o |cffffd200cualquier número por encima de 0|r para establecer el umbral por debajo del cual no se crearán toasts."
+L["DEFAULT_VALUE"] = "Valor por defecto: |cffffd200%s|r"
+L["DND"] = "DND"
+L["DOWNLOADS"] = "Descargas"
+L["FADE_OUT_DELAY"] = "Retraso de desvanecimiento"
+L["FLUSH_QUEUE"] = "Limpiar cola"
+L["FONTS"] = "Fuentes"
+L["GROWTH_DIR"] = "Dirección de aparición"
+L["ICON_BORDER"] = "Borde de icono"
+L["ITEM_FILTERS_DESC"] = "Estos objetos ignoran el umbral de calidad del botín."
+L["NEW_CURRENCY_FILTER_DESC"] = "Introduce el ID de una moneda"
+L["NEW_ITEM_FILTER_DESC"] = "Introduce el ID de un objeto."
+L["RARITY_THRESHOLD"] = "Límite de rareza"
+L["SCALE"] = "Escala"
+L["SKIN"] = "Apariencia"
+L["STRATA"] = "Altura"
+L["TEST"] = "Test"
+L["TEST_ALL"] = "Test todo"
+L["THRESHOLD"] = "Umbral"
+L["TOAST_NUM"] = "Número de toasts"
+L["TOAST_TYPES"] = "Tipos de Toasts"
+L["TOGGLE_ANCHORS"] = "Alternar anclajes"
+L["TOOLTIPS"] = "Herramientas"
+L["TRACK_LOSS"] = "Mostrar pérdidas"
+L["TRACK_LOSS_DESC"] = "Esta opción ignora el margen de cobre establecido."
+L["TYPE_LOOT_CURRENCY"] = "Botín (Moneda)"
+L["TYPE_LOOT_GOLD"] = "Botín (Oro)"
+L["YOU_LOST"] = "Has perdido"
+L["YOU_RECEIVED"] = "Has recibido"

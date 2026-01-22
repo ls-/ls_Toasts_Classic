@@ -1,0 +1,45 @@
+﻿local _, addon = ...
+local L = addon.L
+
+-- Lua
+local _G = getfenv(0)
+
+if GetLocale() ~= "deDE" then return end
+
+L["ANCHOR_FRAME_#"] = "Ankerrahmen #%d"
+L["ANCHOR_FRAMES"] = "Ankerrahmen"
+L["ANCHOR_RESET_DESC"] = "|cffffffffShift klick|r um die Position zurückzusetzen."
+L["BORDER"] = "Rahmen"
+L["CHANGELOG"] = "Änderungsprotokoll"
+L["CHANGELOG_FULL"] = "Komplett"
+L["COORDS"] = "Koordinaten"
+L["COPPER_THRESHOLD"] = "Kupferschwelle"
+L["COPPER_THRESHOLD_DESC"] = "Minimale Anzahl Kupfer. Ab dieser Anzahl wird eine Benachrichtigung erstellt."
+L["CURRENCY_THRESHOLD_DESC"] = "Gib |cffffd200-1|r zum Ignorieren der Währung, |cffffd2000|r zum deaktivieren der Filter oder |cffffd200any number above 0|r um den Schwellenwert einzustellen unter dem keine Beanchrichtigungen erstellt werden, ein."
+L["DEFAULT_VALUE"] = "Standartwert: |cffffd200%s|r"
+L["DND"] = "DND"
+L["DOWNLOADS"] = "Downloads"
+L["FADE_OUT_DELAY"] = "Ausblendungsverzögerung"
+L["FLUSH_QUEUE"] = "Warteschlange"
+L["FONTS"] = "Schriften"
+L["GROWTH_DIR"] = "Ausbreitungsrichtung"
+L["ICON_BORDER"] = "Symbolrahmen"
+L["ITEM_FILTERS_DESC"] = "Diese Gegenstände ignorieren den Schwellenwert für die Qualität der Beute."
+L["NEW_CURRENCY_FILTER_DESC"] = "Gib eine Währungs ID ein."
+L["NEW_ITEM_FILTER_DESC"] = "Gib eine Gegenstands ID ein."
+L["RARITY_THRESHOLD"] = "Schwellenwert der Seltenheit"
+L["SCALE"] = "Skalierung"
+L["SKIN"] = "Oberfläche"
+L["STRATA"] = "Ebene"
+L["TEST"] = "Test"
+L["TEST_ALL"] = "Alle testen"
+L["THRESHOLD"] = "Schwellenwert"
+L["TOAST_NUM"] = "Anzahl der Benachrichtigungen"
+L["TOAST_TYPES"] = "Benachrichtigungstypen"
+L["TOGGLE_ANCHORS"] = "Ankerpunkte umschalten"
+L["TRACK_LOSS"] = "Verlust Verfolgung"
+L["TRACK_LOSS_DESC"] = "Diese Option ignoriert die Kupferschwelle."
+L["TYPE_LOOT_CURRENCY"] = "Beute (Abzeichen)"
+L["TYPE_LOOT_GOLD"] = "Beute (Gold)"
+L["YOU_LOST"] = "Ihr verliert"
+L["YOU_RECEIVED"] = "Ihr erhaltet"

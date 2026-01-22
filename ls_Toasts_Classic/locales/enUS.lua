@@ -1,0 +1,86 @@
+﻿local _, addon = ...
+local C, D, L = addon.C, addon.D, addon.L
+
+-- Lua
+local _G = getfenv(0)
+
+-- Mine
+L["LS_TOASTS"] = ("LS: |c%sToasts|r"):format(D.global.colors.addon:GetHex())
+L["CURSEFORGE"] = "CurseForge"
+L["DISCORD"] = "Discord"
+L["GITHUB"] = "GitHub"
+L["WAGO"] = "Wago"
+L["WOWINTERFACE"] = "WoWInterface"
+L["INFO"] = D.global.colors.addon:WrapTextInColorCode(_G.INFO)
+L["AC_TOOLTIP"] = ("|c%1$sClick:|r %2$s\n|c%1$sShift Click:|r %3$s"):format(D.global.colors.addon:GetHex(), _G.GAMEMENU_OPTIONS, _G.ADVANCED_OPTIONS)
+
+L["ADD"] = _G.ADD
+L["COLORS"] = _G.COLORS
+L["DELETE"] = _G.DELETE
+L["ENABLE"] = _G.ENABLE
+L["FILTERS"] = _G.FILTERS
+L["GENERAL"] = _G.GENERAL_LABEL
+L["GROWTH_DIR_DOWN"] = _G.HUD_EDIT_MODE_SETTING_AURA_FRAME_ICON_DIRECTION_DOWN
+L["GROWTH_DIR_LEFT"] = _G.HUD_EDIT_MODE_SETTING_AURA_FRAME_ICON_DIRECTION_LEFT
+L["GROWTH_DIR_RIGHT"] = _G.HUD_EDIT_MODE_SETTING_AURA_FRAME_ICON_DIRECTION_RIGHT
+L["GROWTH_DIR_UP"] = _G.HUD_EDIT_MODE_SETTING_AURA_FRAME_ICON_DIRECTION_UP
+L["ID"] = _G.ID
+L["ILVL"] = _G.LFG_LIST_ITEM_LEVEL_INSTR_SHORT
+L["ITEM_LEGENDARY"] = _G.LEGENDARY_ITEM_LOOT_LABEL
+L["LOOT_THRESHOLD"] = _G.LOOT_THRESHOLD
+L["MATERIALS"] = _G.WORLD_QUEST_REWARD_FILTERS_PROFESSION_MATERIALS
+L["NAME"] = _G.CALENDAR_EVENT_NAME
+L["NEW"] = _G.NEW
+L["PETS"] = _G.PETS
+L["QUEST_ITEMS"] = _G.AUCTION_CATEGORY_QUEST_ITEMS
+L["SFX"] = _G.ENABLE_SOUNDFX
+L["SIZE"] = _G.HUD_EDIT_MODE_SETTING_MINIMAP_SIZE
+
+-- Require translation
+L["ALLOW"] = "Allow"
+L["ANCHOR_FRAME_#"] = "Anchor Frame #%d"
+L["ANCHOR_FRAMES"] = "Anchor Frames"
+L["ANCHOR_RESET_DESC"] = "|cffffffffShift click|r to reset the position."
+L["BLOCK"] = "Block"
+L["BORDER"] = "Border"
+L["CHANGELOG_FULL"] = "Full"
+L["CHANGELOG"] = "Changelog"
+L["COORDS"] = "Coordinates"
+L["COPPER_THRESHOLD_DESC"] = "Min amount of copper to create a toast for."
+L["COPPER_THRESHOLD"] = "Copper Threshold"
+L["CURRENCY_THRESHOLD_DESC"] = "Enter |cffffd200-1|r to ignore the currency, |cffffd2000|r to disable the filter, or |cffffd200any number above 0|r to set the threshold below which no toasts will be created."
+L["DEFAULT_VALUE"] = "Default value: |cffffd200%s|r"
+L["DND_DESC"] = "Toasts in DND mode won't be displayed in combat, but will be queued up in the system. Once you leave combat, they'll start popping up."
+L["DND"] = "DND"
+L["DOWNLOADS"] = "Downloads"
+L["FADE_OUT_DELAY"] = "Fade Out Delay"
+L["FLUSH_QUEUE"] = "Flush Queue"
+L["FONTS"] = "Fonts"
+L["GROWTH_DIR"] = "Growth Direction"
+L["ICON_BORDER"] = "Icon Border"
+L["ITEM_FILTERS_DESC"] = "These items ignore the loot quality threshold."
+L["LINK_COPY_SUCCESS"] = "Link Copied to Clipboard"
+L["NEW_CURRENCY_FILTER_DESC"] = "Enter a currency ID."
+L["NEW_ITEM_FILTER_DESC"] = "Enter an item ID."
+L["OFFSET_X"] = "Offset X"
+L["OFFSET_Y"] = "Offset Y"
+L["RARITY_THRESHOLD"] = "Rarity Threshold"
+L["SCALE"] = "Scale"
+L["SKIN"] = "Skin"
+L["STRATA"] = "Strata"
+L["SUPPORT_FEEDBACK"] = "Support & Feedback"
+L["TEST_ALL"] = "Test All"
+L["TEST"] = "Test"
+L["THRESHOLD"] = "Threshold"
+L["TOAST_NUM"] = "Number of Toasts"
+L["TOAST_TYPES"] = "Toast Types"
+L["TOGGLE_ANCHORS"] = "Toggle Anchors"
+L["TOOLTIPS"] = "Tooltips"
+L["TRACK_LOSS_DESC"] = "This option ignores set copper threshold."
+L["TRACK_LOSS"] = "Track Loss"
+L["TYPE_LOOT_CURRENCY"] = "Loot (Currency)"
+L["TYPE_LOOT_GOLD"] = "Loot (Gold)"
+L["TYPE_LOOT_ITEM"] = "Loot (Item)"
+L["VFX"] = "Visual Effects"
+L["YOU_LOST"] = "You Lost"
+L["YOU_RECEIVED"] = "You Received"
