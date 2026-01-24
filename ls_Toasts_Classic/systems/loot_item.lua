@@ -12,6 +12,7 @@ local tostring = _G.tostring
 
 -- Mine
 local PLAYER_GUID = UnitGUID("player")
+local PLAYER_NAME = UnitName("player")
 
 local CACHED_LOOT_ITEM_CREATED
 local CACHED_LOOT_ITEM_CREATED_MULTIPLE
@@ -203,8 +204,8 @@ local function Toast_SetUp(event, link, quantity)
 	end
 end
 
-local function CHAT_MSG_LOOT(message, _, _, _, _, _, _, _, _, _, _, guid)
-	if guid and guid ~= PLAYER_GUID then
+local function CHAT_MSG_LOOT(message, _, _, _, name, _, _, _, _, _, _, guid)
+	if guid and guid ~= PLAYER_GUID or name ~= PLAYER_NAME then
 		return
 	end
 
