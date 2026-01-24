@@ -6,5 +6,7 @@ local _G = getfenv(0)
 
 -- Mine
 E.CHANGELOG = [[
-- Release released.
+### Loot (Item)
+
+- Fixed an issue where loot toasts would show up even for others.
 ]]
