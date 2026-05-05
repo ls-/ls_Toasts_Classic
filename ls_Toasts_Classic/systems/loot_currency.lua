@@ -1,3 +1,5 @@
+if GetClientDisplayExpansionLevel() < 1 then return end
+
 local _, addon = ...
 local E, L, C = addon.E, addon.L, addon.C
 

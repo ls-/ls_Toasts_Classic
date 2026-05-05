@@ -2,13 +2,13 @@
 
 A replacement for the default alert system. Better toasts, cheers!
 
-This version of the addon was made to support Vanilla, TBC, and WotLK specifically.
+**This version of the addon was made to support Vanilla, TBC, and WotLK specifically.**
 
 ![image](https://i.imgur.com/PvzX6VF.gif)
 
 ## Download
 
-- [Curse](https://www.curseforge.com/wow/addons/ls-toasts-classic)
+- [CurseForge](https://www.curseforge.com/wow/addons/ls-toasts-classic)
 - [Wago](https://addons.wago.io/addons/ls-toasts-classic)
 
 ## Options
@@ -21,7 +21,7 @@ If you found a bug or want to share an idea on how to improve my addon, either u
 
 ## Localisation
 
-Feel free to add and/or review translations on [Curse](https://www.curseforge.com/wow/addons/ls-toasts-classic/localization), alternatively, you may create a PR on [project's GitHub page](https://github.com/ls-/ls_Toasts_Classic/pulls).
+Feel free to add and/or review translations on [CurseForge](https://www.curseforge.com/wow/addons/ls-toasts-classic/localization), alternatively, you may create a PR on [project's GitHub page](https://github.com/ls-/ls_Toasts_Classic/pulls).
 
 ## License
 
