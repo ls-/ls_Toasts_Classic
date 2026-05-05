@@ -1,4 +1,4 @@
-## Interface: 20505
+## Interface: 11508, 20505
 ## Author: lightspark
 ## Version: 20505.03
 ## Title: LS: |cff1cd3a2Toasts|r
