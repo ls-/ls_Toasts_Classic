@@ -50,6 +50,7 @@ read_globals = {
 	"FormatLargeNumber",
 	"GameTooltip",
 	"GameTooltip_ShowCompareItem",
+	"GetClientDisplayExpansionLevel",
 	"GetCurrencyListInfo",
 	"GetCurrencyListSize",
 	"GetCVarBool",
@@ -79,4 +80,5 @@ read_globals = {
 	"UIParent",
 	"UnitFactionGroup",
 	"UnitGUID",
+	"UnitName",
 }
