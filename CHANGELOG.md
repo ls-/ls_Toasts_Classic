@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 20505.04
+
+- Added proper Vanilla support.
+
 ## Version 20505.03
 
 - Properly exposed the config C sub-table.
