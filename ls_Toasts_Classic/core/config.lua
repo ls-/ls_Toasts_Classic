@@ -9,7 +9,6 @@ local next = _G.next
 local s_format = _G.string.format
 
 -- Mine
-
 -- move these elsehwere
 local CL_LINK = "https://github.com/ls-/ls_Toasts_Classic/blob/master/CHANGELOG.md"
 local CURSE_LINK = "https://www.curseforge.com/wow/addons/ls-toasts-classic"
@@ -194,9 +193,8 @@ do
 		local versionText = panel:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
 		versionText:SetPoint("TOPRIGHT", -2, 4)
 		versionText:SetTextColor(0.4, 0.4, 0.4)
-		versionText:SetText(E.VER.string)
+		versionText:SetText(addon.VER.string)
 
-		-- UIPanelButtonTemplate
 		local configButton = CreateFrame("Button", nil, panel, "UIPanelButtonTemplate")
 		configButton:SetText(_G.ADVANCED_OPTIONS)
 		configButton:SetWidth(configButton:GetTextWidth() + 18)
@@ -276,10 +274,15 @@ do
 		changelog:SetText(E.CHANGELOG)
 
 		supportContainer:MarkDirty()
+		downloadContainer:MarkDirty()
 
-		local category = Settings.RegisterCanvasLayoutCategory(panel, L["LS_TOASTS"])
+		local category = Settings.RegisterCanvasLayoutCategory(panel, L["ADDON_NAME"])
 
 		Settings.RegisterAddOnCategory(category)
+
+		function addon:GetBlizzCategory()
+			return category
+		end
 
 		function addon:OpenBlizzConfig()
 			Settings.OpenToCategory(category:GetID())
@@ -290,7 +293,7 @@ end
 function addon:CreateAceConfig()
 	C.options = {
 		type = "group",
-		name = s_format("%s |cffcacaca(%s)|r", L["LS_TOASTS"], E.VER.string),
+		name = s_format("%s |cffcacaca(%s)|r", L["ADDON_NAME"], addon.VER.string),
 		args = {
 			toggle_anchors = {
 				order = 1,
@@ -471,6 +474,25 @@ function addon:CreateAceConfig()
 	C.options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(C.db, true)
 	C.options.args.profiles.order = 100
 	C.options.args.profiles.desc = nil
+	C.options.args.profiles.hidden = function()
+		return not SettingsPanel:IsShown()
+	end
+
+	C.options.args.profiles.args.spacer_1 = {
+		order = 100,
+		type = "description",
+		name = " ",
+	}
+
+	C.options.args.profiles.args.importexport = {
+		order = 110,
+		type = "execute",
+		name = s_format("%s / %s", L["IMPORT"], L["EXPORT"]),
+		func = addon.OpenImportExport,
+		width = "full",
+	}
+
+	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addonName, C.options.args.profiles.name, addon:GetBlizzCategory():GetID(), "profiles")
 
 	function addon:OpenAceConfig()
 		if not InCombatLockdown() then
