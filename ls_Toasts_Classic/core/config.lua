@@ -291,7 +291,6 @@ do
 	end
 end
 
-
 function addon:CreateAceConfig()
 	C.options = {
 		type = "group",
