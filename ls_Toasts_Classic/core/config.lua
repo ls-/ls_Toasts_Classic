@@ -286,8 +286,6 @@ do
 		end
 
 		function addon:OpenBlizzConfig()
-			C.options.args.profiles.hidden = nil
-
 			Settings.OpenToCategory(category:GetID())
 		end
 	end
@@ -478,6 +476,9 @@ function addon:CreateAceConfig()
 	C.options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(C.db, true)
 	C.options.args.profiles.order = 100
 	C.options.args.profiles.desc = nil
+	C.options.args.profiles.hidden = function()
+		return not SettingsPanel:IsShown()
+	end
 
 	C.options.args.profiles.args.spacer_1 = {
 		order = 100,
@@ -499,8 +500,6 @@ function addon:CreateAceConfig()
 		if not InCombatLockdown() then
 			HideUIPanel(SettingsPanel)
 		end
-
-		C.options.args.profiles.hidden = true
 
 		LibStub("AceConfigDialog-3.0"):Open(addonName)
 	end
