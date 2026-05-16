@@ -1,4 +1,4 @@
-local _, addon = ...
+﻿local _, addon = ...
 local L = addon.L
 
 -- Lua
@@ -19,6 +19,7 @@ L["CURRENCY_THRESHOLD_DESC"] = "Entrez |cffffd200-1|r pour ignorer la devise, |c
 L["DEFAULT_VALUE"] = "Valeur par défaut : |cffffd200%s|r"
 L["DND"] = "NPD"
 L["DOWNLOADS"] = "Téléchargements"
+L["EXPORT"] = "Exporter"
 L["FADE_OUT_DELAY"] = "Délai de disparition en fondu"
 L["FLUSH_QUEUE"] = "Vider la file d'attente"
 L["FONTS"] = "Polices"
@@ -28,6 +29,7 @@ L["GROWTH_DIR_LEFT"] = "Gauche"
 L["GROWTH_DIR_RIGHT"] = "Droite"
 L["GROWTH_DIR_UP"] = "Haut"
 L["ICON_BORDER"] = "Bordure d'icône"
+L["IMPORT"] = "Importer"
 L["NEW_CURRENCY_FILTER_DESC"] = "Entrez un ID de monnaie."
 L["RARITY_THRESHOLD"] = "Seuil de rareté"
 L["SCALE"] = "Echelle"

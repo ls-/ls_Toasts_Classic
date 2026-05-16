@@ -1,4 +1,4 @@
-local _, addon = ...
+﻿local _, addon = ...
 local L = addon.L
 
 -- Lua
@@ -16,6 +16,7 @@ L["COPPER_THRESHOLD_DESC"] = "알림창을 만들 최소 코퍼 금액입니다.
 L["CURRENCY_THRESHOLD_DESC"] = "이 화폐를 무시하려면 |cffffd200-1|r 입력하세요. |cffffd2000|r 을 입력하면 팝업이 생성되지 않으며, |cffffd200 0보다 높은 숫자|r를 입력해야 팝업이 생성되는 최소값이 설정합니다."
 L["DEFAULT_VALUE"] = "기본값: |cffffd200%s|r"
 L["DND"] = "대기"
+L["EXPORT"] = "내보내기"
 L["FADE_OUT_DELAY"] = "페이드 아웃 지연 시간"
 L["FLUSH_QUEUE"] = "대기열 지우기"
 L["FONTS"] = "글꼴"
@@ -25,6 +26,7 @@ L["GROWTH_DIR_LEFT"] = "왼쪽"
 L["GROWTH_DIR_RIGHT"] = "오른쪽"
 L["GROWTH_DIR_UP"] = "위로"
 L["ICON_BORDER"] = "아이콘 테두리"
+L["IMPORT"] = "가져오기"
 L["NEW_CURRENCY_FILTER_DESC"] = "화폐 ID를 입력하세요."
 L["RARITY_THRESHOLD"] = "최저 아이템 등급"
 L["SCALE"] = "크기 비율"
