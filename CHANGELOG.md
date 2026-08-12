@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 20506.01
+
+- Added 2.5.6 and 1.15.9 support.
+
 ## Version 20505.06
 
 - Fixed an issue where profile import/export leaked into other addons. TIL.
