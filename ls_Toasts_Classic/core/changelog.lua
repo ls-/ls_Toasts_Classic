@@ -6,5 +6,5 @@ local _G = getfenv(0)
 
 -- Mine
 E.CHANGELOG = [[
-- Fixed an issue where profile import/export leaked into other addons. TIL.
+- Added 2.5.6 and 1.15.9 support.
 ]]
