@@ -25,10 +25,13 @@ embeds\AceGUI-3.0-LSWidgets\_widgets.xml
 core\core.lua
 core\defaults.lua
 core\modernize.lua
-core\anchor.lua
+core\components\anchor.lua
+core\components\border.lua
+core\components\tooltip.lua
 core\changelog.lua
 core\config.lua
 core\ie.lua
+core\manager.lua
 core\queue.lua
 core\skin.lua
 core\system.lua

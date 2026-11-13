@@ -41,8 +41,7 @@ end
 
 local function Toast_OnEnter(self)
 	if self._data.tooltip_link then
-		GameTooltip:SetHyperlink(self._data.tooltip_link)
-		GameTooltip:Show()
+		addon.Tooltip:ShowHyperlink(self._data.tooltip_link)
 	end
 end
 
@@ -101,7 +100,7 @@ local function Toast_SetUp(event, id, quantity)
 			toast:HookScript("OnEnter", Toast_OnEnter)
 		end
 
-		toast:Spawn(C.db.profile.types.loot_currency.anchor, C.db.profile.types.loot_currency.dnd)
+		toast:Spawn(addon:GetAnchorIDForType("loot_currency"), C.db.profile.types.loot_currency.dnd)
 	else
 		toast._data.count = toast._data.count + quantity
 		toast.Title:SetText(toast._data.count >= 0 and L["YOU_RECEIVED"] or L["YOU_LOST_RED"])
@@ -402,6 +401,12 @@ E:RegisterOptions("loot_currency", {
 	plugins = {
 		filters = {},
 	},
-})
+}, function()
+	for k, v in next, C.db.profile.types.loot_currency.filters do
+		if v == 0 then
+			C.db.profile.types.loot_currency.filters[k] = nil
+		end
+	end
+end)
 
 E:RegisterSystem("loot_currency", Enable, Disable, Test)

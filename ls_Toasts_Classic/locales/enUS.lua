@@ -15,6 +15,7 @@ L["INFO"] = D.global.colors.addon:WrapTextInColorCode(_G.INFO)
 L["AC_TOOLTIP"] = ("|c%1$sClick:|r %2$s\n|c%1$sShift Click:|r %3$s"):format(D.global.colors.addon:GetHex(), _G.GAMEMENU_OPTIONS, _G.ADVANCED_OPTIONS)
 
 L["ADD"] = _G.ADD
+L["ANCHOR_FRAME_#"] = L["ADDON_NAME"] .. " #%d"
 L["COLORS"] = _G.COLORS
 L["DELETE"] = _G.DELETE
 L["ENABLE"] = _G.ENABLE
@@ -39,7 +40,6 @@ L["SFX"] = _G.ENABLE_SOUNDFX
 
 -- Require translation
 L["ALLOW"] = "Allow"
-L["ANCHOR_FRAME_#"] = "Anchor Frame #%d"
 L["ANCHOR_FRAMES"] = "Anchor Frames"
 L["ANCHOR_RESET_DESC"] = "|cffffffffShift click|r to reset the position."
 L["BLOCK"] = "Block"
@@ -92,3 +92,14 @@ L["TYPE_LOOT_ITEM"] = "Loot (Item)"
 L["VFX"] = "Visual Effects"
 L["YOU_LOST"] = "You Lost"
 L["YOU_RECEIVED"] = "You Received"
+
+L["ANCHORS_EM_INFO"] = "Anchor frames and their settings can be found here: |cffffd200%s|r -> |cffffd200%s|r."
+L["LAYOUT"] = "Layout"
+L["LAYOUTS"] = "Layouts"
+L["LAYOUTS_DESC"] = [=[Here you can reset, copy, and delete the settings tied to your Edit Mode layouts.
+Please note, all of this data is stored in your current profile.]=]
+L["PROFILE_AND_LAYOUT"] = "Profile & Layout"
+L["COPY_LAYOUT_DESC"] = "Copy the settings from another layout into the current layout."
+L["DELETE_LAYOUT_DESC"] = "Delete the settings of another layout."
+L["RESET_LAYOUT"] = "Reset |cffffffff\"%s\"|r"
+L["RESET_LAYOUT_DESC"] = "Reset the settings of the current layout to their defaults."
