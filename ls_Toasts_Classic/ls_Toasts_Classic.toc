@@ -1,6 +1,6 @@
 ## Interface: 11509, 20506
 ## Author: lightspark
-## Version: 20506.01
+## Version: 20506.02
 ## Title: LS: |cff1cd3a2Toasts|r
 ## Notes: Better toasts, cheers!
 ## IconTexture: Interface\AddOns\ls_Toasts_Classic\assets\logo-64
