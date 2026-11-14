@@ -295,20 +295,14 @@ function addon:CreateAceConfig()
 		type = "group",
 		name = s_format("%s |cffcacaca(%s)|r", L["ADDON_NAME"], addon.VER.string),
 		args = {
-			toggle_anchors = {
-				order = 1,
-				type = "execute",
-				name = L["TOGGLE_ANCHORS"],
-				func = P.ToggleAnchors,
-			},
 			test_all = {
-				order = 2,
+				order = 1,
 				type = "execute",
 				name = L["TEST_ALL"],
 				func = P.TestAllSystems,
 			},
 			flush_queue = {
-				order = 3,
+				order = 2,
 				type = "execute",
 				name = L["FLUSH_QUEUE"],
 				func = function() P:FlushQueue() end,
@@ -438,20 +432,31 @@ function addon:CreateAceConfig()
 				type = "group",
 				name = L["ANCHOR_FRAMES"],
 				args = {
-					add = {
+					info = {
 						order = 1,
+						type = "description",
+						name = L["ANCHORS_EM_INFO"]:format(_G.MAINMENU_BUTTON, _G.HUD_EDIT_MODE_MENU),
+						fontSize = "medium",
+					},
+					spacer_1 = {
+						order = 2,
+						type = "description",
+						name = " ",
+					},
+					add = {
+						order = 3,
 						name = L["ADD"],
 						type = "execute",
 						width = "full",
 						func = function()
-							local index = #C.db.profile.anchors + 1
-							P:AddAnchor(index)
-							P:GetAnchor(index):Refresh()
-							P:UpdateAnchorsOptions()
+							local index = addon:GetNumAnchorConfigs() + 1
+							addon:AddAnchorConfigByID(index)
+							addon:UpdateLayoutSettings()
+							addon.Anchor:UpdateOptions()
 						end,
 					},
-					spacer_1 = {
-						order = 2,
+					spacer_2 = {
+						order = 4,
 						type = "description",
 						name = " ",
 					},
@@ -465,6 +470,7 @@ function addon:CreateAceConfig()
 				args = {},
 			},
 			-- profiles = {}, -- 100
+			-- layouts = {}, -- 200
 		},
 	}
 
@@ -496,6 +502,10 @@ function addon:CreateAceConfig()
 	}
 
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addonName, C.options.args.profiles.name, addon:GetBlizzCategory():GetID(), "profiles")
+
+	C.options.args.layouts = addon.LayoutManager:GetOptionsTable(200)
+
+	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addonName, C.options.args.layouts.name, addon:GetBlizzCategory():GetID(), "layouts")
 
 	function addon:OpenAceConfig()
 		if not InCombatLockdown() then

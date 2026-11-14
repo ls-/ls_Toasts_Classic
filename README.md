@@ -2,7 +2,7 @@
 
 A replacement for the default alert system. Better toasts, cheers!
 
-**This version of the addon was made to support Vanilla, TBC, and WotLK specifically.**
+**This version of the addon was made to support Vanilla and TBC specifically.**
 
 ![image](https://i.imgur.com/PvzX6VF.gif)
 
@@ -13,7 +13,9 @@ A replacement for the default alert system. Better toasts, cheers!
 
 ## Options
 
-Use **`/LSTOASTS`** or **`/LST`** to open in-game config.
+- Use **`/LSTOASTS`** or **`/LST`** to open in-game config.
+- Anchors and most of their settings are available via **Edit Mode**.
+- Go to **Options** > **AddOns** > **LS: Toasts** to manage profiles and the layout data.
 
 ## Feedback and Feature Requests
 

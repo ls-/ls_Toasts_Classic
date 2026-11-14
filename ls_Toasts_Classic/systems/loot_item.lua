@@ -77,8 +77,7 @@ end
 
 local function Toast_OnEnter(self)
 	if self._data.tooltip_link then
-		GameTooltip:SetHyperlink(self._data.tooltip_link)
-		GameTooltip:Show()
+		addon.Tooltip:ShowHyperlink(self._data.tooltip_link)
 	end
 end
 
@@ -185,7 +184,7 @@ local function Toast_SetUp(event, link, quantity)
 		end
 
 		toast:HookScript("OnClick", Toast_OnClick)
-		toast:Spawn(C.db.profile.types.loot_item.anchor, C.db.profile.types.loot_item.dnd)
+		toast:Spawn(addon:GetAnchorIDForType("loot_item"), C.db.profile.types.loot_item.dnd)
 	else
 		if isQueued then
 			toast._data.count = toast._data.count + quantity
@@ -415,7 +414,6 @@ end
 
 E:RegisterOptions("loot_item", {
 	enabled = true,
-	anchor = 1,
 	dnd = false,
 	sfx = true,
 	vfx = true,

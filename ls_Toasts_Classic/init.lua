@@ -6,6 +6,7 @@ local _G = getfenv(0)
 local hooksecurefunc = _G.hooksecurefunc
 local next = _G.next
 local print = _G.print
+local s_lower = _G.string.lower
 local tonumber = _G.tonumber
 
 -- Mine
@@ -54,14 +55,14 @@ local BLACKLISTED_REGISTRY_EVENTS = {
 }
 
 local function updateCallback()
-	P:UpdateAnchors()
 	P:UpdateDB()
-	P:FlushQueue()
+	addon:UpdateLayoutSettings()
 	P:DisableAllSystems()
 	P:EnableAllSystems()
 end
 
 local function shutdownCallback()
+	addon:RunShutdownCallbacks()
 	C.db.profile.version = addon.VER.number
 end
 
@@ -103,7 +104,7 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 
 		for _, callbackTable in next, EventRegistry:GetCallbackTables() do
 			if callbackTable[event] then
-				callbackTable[event] = nil
+				addon:PurgeKey(callbackTable, event)
 			end
 		end
 	end
@@ -133,8 +134,8 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 	-- })
 
 	E:RegisterEvent("PLAYER_LOGIN", function()
-		P:UpdateAnchors()
 		P:UpdateDB()
+		addon:UpdateLayoutSettings()
 		P:UpdateOptions()
 		P:EnableAllSystems()
 
@@ -145,6 +146,7 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 		SLASH_LSTOASTS1 = "/lstoasts"
 		SLASH_LSTOASTS2 = "/lst"
 		SlashCmdList["LSTOASTS"] = function(msg)
+			msg = s_lower(msg)
 			if msg == "" then
 				addon:OpenAceConfig()
 			elseif msg == "test" then
@@ -173,6 +175,14 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 						end
 					end
 				end
+			elseif msg == "ie" then
+				addon:OpenImportExport()
+			elseif msg == "reparentanchors" then
+				for i = 1, addon:GetNumAnchorConfigs() do
+					addon:ResetAnchorPointByID(i)
+				end
+
+				addon:UpdateLayoutSettings()
 			end
 		end
 	end)

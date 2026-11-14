@@ -3,6 +3,7 @@ local E, P, C, D, L = addon.E, addon.P, addon.C, addon.D, addon.L
 
 -- Lua
 local _G = getfenv(0)
+local hooksecurefunc = _G.hooksecurefunc
 local next = _G.next
 local t_insert = _G.table.insert
 local t_remove = _G.table.remove
@@ -17,9 +18,9 @@ function P:RefreshQueues()
 	if not fullscreenParent:IsShown() then return end
 
 	for anchorID, queued in next, queuedToasts do
-		local config = C.db.profile.anchors[anchorID]
-		if not config then return end
+		if not addon.Anchor:Get(anchorID) then return end
 
+		local config = addon:GetAnchorConfigByID(anchorID)
 		local active = activeToasts[anchorID]
 
 		if #active < config.max_active_toasts then
@@ -40,7 +41,7 @@ function P:RefreshQueues()
 			active[i]:ClearAllPoints()
 
 			if i == 1 then
-				active[i]:SetPoint("TOPLEFT", P:GetAnchor(anchorID), "TOPLEFT", 0, 0)
+				active[i]:SetPoint("TOPLEFT", addon.Anchor:Get(anchorID), "TOPLEFT", 0, 0)
 			else
 				if config.growth_direction == "DOWN" then
 					active[i]:SetPoint("TOP", active[i - 1], "BOTTOM", 0, -config.growth_offset_y)

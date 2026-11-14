@@ -4,6 +4,7 @@ local addonName, addon = ...
 local _G = getfenv(0)
 local error = _G.error
 local geterrorhandler = _G.geterrorhandler
+local issecurevariable = _G.issecurevariable
 local next = _G.next
 local pairs = _G.pairs
 local s_format = _G.string.format
@@ -11,6 +12,8 @@ local s_match = _G.string.match
 local s_split = _G.string.split
 local setmetatable = _G.setmetatable
 local t_concat = _G.table.concat
+local t_insert = _G.table.insert
+local t_sort = _G.table.sort
 local tonumber = _G.tonumber
 local type = _G.type
 local xpcall = _G.xpcall
@@ -24,6 +27,29 @@ _G[addonName] = {
 	[2] = C,
 	[3] = L,
 }
+
+do
+	local _, _, _, toc = GetBuildInfo()
+	addon.GAMEVERSION = {
+		[         "Vanilla"] = toc < 16000,
+		[         "Forever"] = toc >= 16000 and toc < 20000,
+		[  "BurningCrusade"] = toc >= 20000 and toc < 30000,
+		[           "Wrath"] = toc >= 30000 and toc < 40000,
+		[   "TitanReforged"] = toc >= 38000 and toc < 40000,
+		[       "Cataclysm"] = toc >= 40000 and toc < 50000,
+		[           "Mists"] = toc >= 50000 and toc < 60000,
+		[        "Warlords"] = toc >= 60000 and toc < 70000,
+		[          "Legion"] = toc >= 70000 and toc < 80000,
+		["BattleForAzeroth"] = toc >= 80000 and toc < 90000,
+		[     "Shadowlands"] = toc >= 90000 and toc < 100000,
+		[    "Dragonflight"] = toc >= 100000 and toc < 110000,
+		[       "WarWithin"] = toc >= 110000 and toc < 120000,
+		[        "Midnight"] = toc >= 120000 and toc < 130000,
+		[       "LastTitan"] = toc >= 130000 and toc < 140000,
+		-- keep retail as its own entry
+		[        "Standard"] = toc >= 120000,
+	}
+end
 
 do
 	local oneTimeEvents = {ADDON_LOADED = false, PLAYER_LOGIN = false}
@@ -95,6 +121,16 @@ function P:UpdateTable(src, dest)
 	return dest
 end
 
+function addon:UpdateTable(src, dest)
+	for k, v in next, src do
+		if type(v) == "table" then
+			self:UpdateTable(v, dest[k])
+		else
+			dest[k] = v
+		end
+	end
+end
+
 function addon:CopyTable(src, dest, ignore)
 	if type(dest) ~= "table" then
 		dest = {}
@@ -154,6 +190,19 @@ function addon:DiffTable(dest, src, blocker)
 	end
 end
 
+function addon:PurgeKey(t, k)
+	t[k] = nil
+
+	local c = 42
+	repeat
+		if t[c] == nil then
+			t[c] = nil
+		end
+
+		c = c + 1
+	until issecurevariable(t, k)
+end
+
 do
 	local function errorHandler(err)
 		return geterrorhandler()(err)
@@ -170,34 +219,6 @@ P.CallbackHandler = LibStub("CallbackHandler-1.0"):New(E)
 -------------
 -- HELPERS --
 -------------
-
-function E:SanitizeLink(link)
-	if not link or link == "[]" or link == "" then
-		return
-	end
-
-	local temp, name = s_match(link, "|H(.+)|h%[(.+)%]|h")
-	link = temp or link
-
-	local linkTable = {s_split(":", link)}
-
-	if linkTable[1] ~= "item" then
-		return link, link, linkTable[1], tonumber(linkTable[2]), name
-	end
-
-	-- remove modifier types and values due to inconsistencies
-	local numBonusIDs = tonumber(linkTable[14])
-	if numBonusIDs then
-		local numModifiers = tonumber(linkTable[15 + numBonusIDs])
-		if numModifiers then
-			for i = 16 + numBonusIDs, 16 + numBonusIDs + numModifiers * 2 - 1 do
-				linkTable[i] = ""
-			end
-		end
-	end
-
-	return t_concat(linkTable, ":"), link, linkTable[1], tonumber(linkTable[2]), name
-end
 
 function E:GetScreenQuadrant(frame)
 	local x, y = frame:GetCenter()
@@ -270,6 +291,65 @@ do
 		end
 
 		return -1, -1
+	end
+end
+
+do
+	local cache = {}
+
+	function E:SanitizeLink(link)
+		if not link or link == "[]" or link == "" then
+			return
+		end
+
+		local temp, name = s_match(link, "|H(.+)|h%[(.+)%]|h")
+		link = temp or link
+
+		local info = cache[link]
+		if not info then
+			local linkTable = {s_split(":", link)}
+			if linkTable[1] ~= "item" then
+				return link, link, linkTable[1], tonumber(linkTable[2]), name
+			end
+
+			-- sort bonuses
+			local numBonusIDs = tonumber(linkTable[14])
+			if numBonusIDs then
+				local tmp = {}
+				for i = 15, 14 + numBonusIDs do
+					t_insert(tmp, tonumber(linkTable[i]))
+				end
+
+				t_sort(tmp)
+
+				for i = 1, #tmp do
+					linkTable[14 + i] = tmp[i]
+				end
+			else
+				numBonusIDs = 0
+			end
+
+			-- remove modifiers due to inconsistencies
+			local numModifiers = tonumber(linkTable[15 + numBonusIDs])
+			if numModifiers then
+				linkTable[15 + numBonusIDs] = ""
+
+				for i = 16 + numBonusIDs, 16 + numBonusIDs + numModifiers * 2 - 1 do
+					linkTable[i] = ""
+				end
+			end
+
+			cache[link] = {
+				table = linkTable,
+				string = t_concat(linkTable, ":"),
+				id = tonumber(linkTable[2]),
+			}
+
+			info = cache[link]
+		end
+
+		-- only item links get this far
+		return info.string, link, "item", info.id, name
 	end
 end
 
